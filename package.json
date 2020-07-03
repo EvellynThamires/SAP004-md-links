@@ -1,4 +1,30 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "description": "Biblioteca",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose --coverage",
+    "eslint": "eslint --ext .js index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvellynThamires/SAP004-md-links.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvellynThamires/SAP004-md-links/issues"
+  },
+  "homepage": "https://github.com/EvellynThamires/SAP004-md-links#readme",
+  "devDependencies": {
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "jest": "^26.1.0"
+  }
 }
