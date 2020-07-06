@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "bin": {
+    "vrlinks": "index.js"
+  },
   "scripts": {
     "test": "jest --verbose --coverage",
     "eslint": "eslint --ext .js index"
@@ -26,5 +29,13 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "cli-table": "^0.3.1",
+    "commander": "^5.1.0",
+    "figlet": "^1.4.0",
+    "inquirer": "^7.3.0",
+    "shelljs": "^0.8.4"
   }
 }
