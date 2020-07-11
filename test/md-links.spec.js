@@ -1,10 +1,9 @@
-const mdLinks = require('../');
+const mdLinks = require('./mock_mdlinks');
 
-
+// eslint-disable-next-line no-undef
 describe('mdLinks', () => {
-
-  it('should...', () => {
-    console.log('FIX ME!');
+  // eslint-disable-next-line no-undef
+  it('should return a table', () => {
+    
   });
-
 });

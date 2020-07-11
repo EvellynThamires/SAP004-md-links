@@ -9,8 +9,6 @@ const program = require('commander'); /** Criar um comando no console */
 
 const pack = require('./package.json'); /** Pegar o arquivo package JSON */
 
-const paths = join(__dirname, 'teste.md'); /** Cria um caminho. */
-
 program.version(pack.version); /** Verifica a versão do package JSON */
 
 const getJson = (path) => {
@@ -86,17 +84,28 @@ const validateLink = (data) => {
   });
 };
 
+axios.defaults.validateStatus = (code) => code < 500;
+
+const testeLink = (data) => new Promise((resolve, reject) => {
+  const newArray = data.map((e) => axios.get(e.link, { validateStatus: (status) => status < 500 }));
+  Promise.all(newArray)
+    .then((values) => {
+      resolve(values);
+    });
+});
+
 program
   .command('add [mdlinks]')
   .description('Verify a link')
   .option('-v, --validate [verify]', 'sendo true verifica se a url é valida ou não')
   .option('-s, --stats [stats]', 'sendo true mostra quantos links são válidos')
   .action((mdlinks, options) => {
+    const paths = join(__dirname, mdlinks); /** Cria um caminho. */
+    console.log(paths);
     const { validate, stats } = options; /** Pega validate e stats dentro de options */
-    console.log(stats);
     const data = getJson(paths); /** Pega os links do arquivo selecionado. */
     if (validate === true) {
-      validateLink(data);
+      console.log(validateLink(data));
     } else {
       showTable(data, validate);
       console.log(`${chalk.green('Fim do processo')}`);
