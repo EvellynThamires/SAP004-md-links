@@ -64,31 +64,43 @@ const showTable = (data, validate) => {
   }
 };
 
-const validateLink = (data) => {
-  data.forEach((e) => {
+// const validateLink = (data) => {
+//   data.forEach((e) => {
+//     axios.get(e.link)
+//       .then((response) => {
+//         console.log(`
+//           ${chalk.green(e.text)}
+//           ${chalk.green(e.link)}
+//           ${chalk.green(response.status)}
+//         `);
+//       })
+//       .catch(() => {
+//         console.log(`
+//           ${chalk.red(e.text)}
+//           ${chalk.red(e.link)}
+//           ${chalk.red(404)}
+//         `);
+//       });
+//   });
+
+const checkedLink = (data) => new Promise((resolve, reject) => {
+  const promiseCreate = data.map((e) => new Promise((resolve, reject) => {
     axios.get(e.link)
       .then((response) => {
-        console.log(`
-          ${chalk.green(e.text)}
-          ${chalk.green(e.link)}
-          ${chalk.green(response.status)}
-        `);
+        resolve({
+          status: response.status,
+          link: response.config.url,
+        });
       })
       .catch(() => {
-        console.log(`
-          ${chalk.red(e.text)}
-          ${chalk.red(e.link)}
-          ${chalk.red(404)}
-        `);
+        resolve({
+          status: 404,
+          link: e.link,
+        });
       });
-  });
-};
+  }));
 
-axios.defaults.validateStatus = (code) => code < 500;
-
-const testeLink = (data) => new Promise((resolve, reject) => {
-  const newArray = data.map((e) => axios.get(e.link, { validateStatus: (status) => status < 500 }));
-  Promise.all(newArray)
+  Promise.all(promiseCreate)
     .then((values) => {
       resolve(values);
     });
@@ -105,7 +117,15 @@ program
     const { validate, stats } = options; /** Pega validate e stats dentro de options */
     const data = getJson(paths); /** Pega os links do arquivo selecionado. */
     if (validate === true) {
-      console.log(validateLink(data));
+      checkedLink(data)
+        .then((response) => {
+          console.log(response);
+          const unique = response.filter((e) => e.status === 200);
+          console.log('Unique', unique.length);
+          const broken = response.filter((element) => element.status === 404);
+          console.log('Broke', broken.length);
+          console.log('Total', response.length);
+        });
     } else {
       showTable(data, validate);
       console.log(`${chalk.green('Fim do processo')}`);
