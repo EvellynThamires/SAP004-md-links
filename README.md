@@ -1,4 +1,8 @@
-## Indice
+<p align="center">
+<img src="https://media.giphy.com/media/l4FGs5dbisGxm5b9e/giphy.gif" width="200" heigth="200"> 
+</p>
+
+## Índice
 
 * [1. Apresentação](#1-apresentacao)
 * [2. Funcionamento](#2-funcionamento)
@@ -22,5 +26,5 @@ A aplicação consiste em:
 
 
 ## Observações
-Esta aplicação não lê diretórios e não possui testes unitários. Sendo estas aplicações futuras. Esta aplicação usas as normas airbnb.
+Esta aplicação usas as normas airbnb. Esta aplicação não lê diretórios e não possui testes unitários. Sendo estas aplicações futuras. 
     
