@@ -1,4 +1,4 @@
-#!/usr/bin/env node //Interpretador do node para os sistemas operacionais.
+#!/usr/bin/env node
 
 const { join } = require('path'); /** Pega a url do arquivo */
 const fs = require('fs'); /** Lê o arquivo */
