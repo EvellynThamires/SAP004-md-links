@@ -7,7 +7,7 @@
     "test": "test"
   },
   "bin": {
-    "vrlinks": "index.js"
+    "vrlinks": "./index.js"
   },
   "scripts": {
     "test": "jest --verbose --coverage",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/EvellynThamires/SAP004-md-links.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Evellyn Thamires",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/EvellynThamires/SAP004-md-links/issues"

@@ -64,25 +64,6 @@ const showTable = (data, validate) => {
   }
 };
 
-// const validateLink = (data) => {
-//   data.forEach((e) => {
-//     axios.get(e.link)
-//       .then((response) => {
-//         console.log(`
-//           ${chalk.green(e.text)}
-//           ${chalk.green(e.link)}
-//           ${chalk.green(response.status)}
-//         `);
-//       })
-//       .catch(() => {
-//         console.log(`
-//           ${chalk.red(e.text)}
-//           ${chalk.red(e.link)}
-//           ${chalk.red(404)}
-//         `);
-//       });
-//   });
-
 const checkedLink = (data) => new Promise((resolve, reject) => {
   const promiseCreate = data.map((e) => new Promise((resolve, reject) => {
     axios.get(e.link)

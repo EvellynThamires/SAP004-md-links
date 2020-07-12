@@ -26,5 +26,5 @@ A aplicação consiste em:
 
 
 ## Observações
-Esta aplicação usas as normas airbnb. Esta aplicação não lê diretórios e não possui testes unitários. Sendo estas aplicações futuras. 
+Esta aplicação usa as normas airbnb. Esta aplicação não lê diretórios e não possui testes unitários, sendo estas aplicações futuras. 
     
